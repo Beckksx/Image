@@ -6,6 +6,13 @@ import io.spring.image.demo.infra.repository.ImageRepository; //extra pq tava da
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import io.spring.image.demo.domain.entity.Image;
+import io.spring.image.demo.domain.enums.ImageExtension;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
+import java.util.List;
+
 
 import java.util.Optional;
 
@@ -28,4 +35,13 @@ public class ImageServiceImpl implements ImageService {
         return repository.findById(id);
 
     }
+
+    @Override
+    public List<Image> search(ImageExtension extension, String query){
+        return repository.findByExtensionAndNameOrTagsLike(extension, query);
+
+    }
+
+
+
 }

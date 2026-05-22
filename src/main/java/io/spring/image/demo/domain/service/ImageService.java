@@ -8,13 +8,12 @@ package io.spring.image.demo.domain.service;
     import java.util.Optional;
 
 public interface ImageService {
-
-
-    Image save (Image image);
-
-
-
+    //salva imagem
+    Image save(Image image);
+    //retorna imagem
     Optional<Image> getById(String id);
 
     List<Image> search(ImageExtension extension, String query);
+
+
 }

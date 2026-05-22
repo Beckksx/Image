@@ -61,12 +61,30 @@ public class ImagesController {
         return new ResponseEntity<>(image.getFile(), headers, HttpStatus.OK);
     }
 
+//    @GetMapping
+//    public ResponseEntity<ImageDTO> search (
+//            @RequestParam(value = "extension", required = false, defaultValue = "")String extension,
+//            @RequestParam(value = "query", required = false)String query) throws InterruptedException {
+//        Thread.sleep(3000L);
+//        var result = service.search(ImageExtension.valueOf(extension), query);
+//        var images = result.stream().map(image -> {
+//            var url = buildImageURL(image);
+//            return mapper.imageToDTO(image, url.toString());
+//        }).collect(Collectors.toList());
+//
+//        return ResponseEntity.ok(images);
+//    }
+
+
+    //localhost:8080/image?extension=PNG&query=Nature
     @GetMapping
-    public ResponseEntity<ImageDTO> search (
-            @RequestParam(value = "extension", required = false, defaultValue = "")String extension,
-            @RequestParam(value = "query", required = false)String query) throws InterruptedException {
+    public ResponseEntity<List<ImageDTO>> search(
+            @RequestParam(value = "extension", required = false, defaultValue = "") String extension,
+            @RequestParam(value = "query", required = false) String query) throws InterruptedException {
         Thread.sleep(3000L);
-        var result = service.search(ImageExtension.valueOf(extension), query);
+//        var result = service.search(ImageExtension.valueOf(extension), query);
+        var result = service.search(ImageExtension.ofName(extension), query);
+
         var images = result.stream().map(image -> {
             var url = buildImageURL(image);
             return mapper.imageToDTO(image, url.toString());

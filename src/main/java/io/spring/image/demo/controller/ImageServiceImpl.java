@@ -1,19 +1,14 @@
 package io.spring.image.demo.controller;
 
 import io.spring.image.demo.domain.entity.Image;
+import io.spring.image.demo.domain.enums.ImageExtension;
 import io.spring.image.demo.domain.service.ImageService;
-import io.spring.image.demo.infra.repository.ImageRepository; //extra pq tava dando errado
+import io.spring.image.demo.infra.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import io.spring.image.demo.domain.entity.Image;
-import io.spring.image.demo.domain.enums.ImageExtension;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
-
-
 import java.util.Optional;
 
 
